@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/show'
   get 'addresses/create'
   get 'addresses/new'
   get 'addresses/edi'
