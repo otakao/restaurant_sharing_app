@@ -1,0 +1,114 @@
+%body
+  #js-popup.popup
+    .popup__inner
+      =form_with url: maps_path, method: :get,id: :"address" do |f|
+        =f.text_field :address, placeholder: "地名から探す"
+        =f.submit "地図表示", onclick: "codeAddress()"
+      -# .form
+      -#   %form{action: maps_path , :method => "GET"}
+      -#     %input#address{type: "textbox", placeholder: "検索", onclick: "codeAddress()"}/
+      -#     %input{type: "button", value:"Encode", onclick: "codeAddress()"} 
+          -# %input.form-text{:placeholder => "検索", :type => "seach"}/
+        
+          -# %input{:onclick => "codeAddress()", :type => "button", :value => "Encode"}/
+        -# =form_with model: @map, local: true do |f|
+        -#   %input#hidden_address{type: "hidden", name: "map[address]"}/
+        -#   =f.text_field :name, placeholder: "地名から探す", class: "area-research", autocomplete:"off"
+        -#   =f.submit "送信" ,class: "arearesearch-submit"
+        %lavel{class:"icon"}
+          = icon('fas', 'search')                  
+      =link_to "現在地から探す",maps_path, class:"position"
+    #js-white-bg.white-background
+
+            
+  .spoon-category
+    %p.content-header
+      お探しのアイテム一覧
+    .spoon-category__content
+      - @categories.each do |category|
+        .spoon-category__content__box
+          =link_to "#{category.name}", category_path(category), class:"colona"  
+
+  .sign_modal_wrapper
+  .sign_modal
+    %i.fa.fa-window-close
+    .sign_up_modal.sign_modal_content
+      %h2 
+        新規登録フォーム
+      .form-group
+        %form#new_user.new_user{"accept-charset" => "UTF-8", :action => "/users", :method => "post"}
+          %input{:name => "utf8", :type => "hidden", :value => "✓"}/
+          %input{:name => "authenticity_token", :type => "hidden", :value => "1FaAKgVoDDCAo9Vdnzda4OGzf7t3y8Nq6nFE5pexXYeH2vhGdAr//r2l5C08t6W2HwQqas+pjPWCM2I+ZO2NPQ=="}/
+          .field
+            %label{:for => "user_ニックネーム"} ニックネーム
+            %br/
+            %input#user_nickname{:autocomplete => "nickname", :autofocus => "autofocus", :name => "user[nickname]", :type => "text"}/
+          .field
+            %label{:for => "user_メールアドレス"} メールアドレス
+            %br/
+            %input#user_email{:autocomplete => "email", :autofocus => "autofocus", :name => "user[email]", :type => "email", :value => ""}/
+          .field
+            %label{:for => "user_パスワード"} パスワード
+            %em (6 characters minimum)
+            %br/
+            %input#user_password{:autocomplete => "new-password", :name => "user[password]", :type => "password"}/
+          .actions
+            %input#submit{"data-disable-with" => "アカウント作成", :name => "commit", :type => "submit", :value => "アカウント作成"}/
+
+    .sign_in_modal.sign_modal_content
+      %h2 
+        ログインフォーム
+      .form-group
+        %form#new_user.new_user{"accept-charset" => "UTF-8", :action => "/users/sign_in", :method => "post"}
+          %input{:name => "utf8", :type => "hidden", :value => "✓"}/
+          %input{:name => "authenticity_token", :type => "hidden", :value => "1GdiSCqPoBZlFb1CnR2ArBBVassxINAoEh0gnh4VhK6H6xokW+1T2FgTjDI+nX/67uI/GolCn7d6XwZG7UlUFA=="}/
+          .field
+            %label{:for => "user_メールアドレス"} メールアドレス
+            %br/
+            %input#user_email{:autocomplete => "email", :autofocus => "autofocus", :name => "user[email]", :type => "email", :value => ""}/
+          .field
+            %label{:for => "user_パスワード"} パスワード
+            %br/
+            %input#user_password{:autocomplete => "current-password", :name => "user[password]", :type => "password"}/
+          .actions
+            %input#submit{"data-disable-with" => "ログイン", :name => "commit", :type => "submit", :value => "ログイン"}/
+
+  .spoon-main
+    .spoon-main__content
+      .spoon-main__content__left
+        .spoon-main__content__left__form
+          %p.form-header
+            食材の共同購入を募集中の飲食店を探す
+          =form_with url: maps_path do |f|
+            =f.text_field :textbox, placeholder: "地名から探す", id: "position", autocomplete:"off"
+          %lavel{class:"icon"}
+            = icon('fas', 'search')                  
+          =image_tag("shutterstock_1544355779.jpg")
+    .spoon-main__latest-lists
+      %p.main-title
+        貴店も一緒に共同購入しませんか？
+      .spoon-main__latest-lists__inner
+        - @posts.zip(@images).each do |post,image|
+          %ul.inner-box__list
+            =link_to post_path(post),class:"post-detail" do
+              %li.inner-box__list__img
+                =image_tag image.first.image_url, size: "302x226"
+                .photo-inner
+                  .photo-inner__capture
+                    募集中
+              %li.inner-box__list__title
+                %span.item-name
+                  = post.title
+                %span.post-nickname
+                  = post.user.nickname             
+              %li.inner-box__list__shop-detail
+                .shop-name
+                  = post.user.address.shop_name
+                .shop-address
+                  = post.user.address.prefecture_name
+                  = post.user.address.city  
+              
+
+
+  
+
