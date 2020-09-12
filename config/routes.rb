@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'addresses/create'
+  get 'addresses/new'
+  get 'addresses/edi'
+  get 'addresses/update'
   devise_for :users
 
   root to: 'posts#index'
