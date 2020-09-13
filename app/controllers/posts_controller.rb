@@ -40,6 +40,17 @@ class PostsController < ApplicationController
   def update
   end
 
+  def show
+    @category = Category.find(params[:id])
+    @images = @post.images
+    @address = @post.user.address
+    @hash = Gmaps4rails.build_markers(@address) do |place, marker|
+      marker.lat place.latitude
+      marker.lng place.longitude
+      marker.infowindow place.city    
+    end
+  end
+
   private
 
   def post_params

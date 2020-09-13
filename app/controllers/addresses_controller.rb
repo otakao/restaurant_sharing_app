@@ -1,4 +1,11 @@
 class AddressesController < ApplicationController
+  before_action :set_params, only: [:edit, :update]
+
+  def new
+    @user = current_user
+    @address = Address.new
+  end
+
   def create
     @address = Address.new(address_params)
 
@@ -14,10 +21,6 @@ class AddressesController < ApplicationController
 
   end
 
-  def new
-    @user = current_user
-    @address = Address.new
-  end
 
   def edit
     @user = @address.user
@@ -32,6 +35,7 @@ class AddressesController < ApplicationController
         format.html { render :edit }
         format.json { render json: @address.errors, status: :unprocessable_entity}     
       end 
+    end
   end
 
   private
@@ -45,4 +49,3 @@ class AddressesController < ApplicationController
   end
 end
 
-end
