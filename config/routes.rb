@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'maps/index'
+  get 'maps/create'
+  get 'maps/new'
+  get 'maps/show'
   get 'users/show'
   get 'addresses/create'
   get 'addresses/new'
