@@ -1,23 +1,19 @@
 %body
   #js-popup.popup
     .popup__inner
-      =form_with url: maps_path, method: :get,id: :"address" do |f|
-        =f.text_field :address, placeholder: "地名から探す"
-        =f.submit "地図表示", onclick: "codeAddress()"
-      -# .form
-      -#   %form{action: maps_path , :method => "GET"}
-      -#     %input#address{type: "textbox", placeholder: "検索", onclick: "codeAddress()"}/
-      -#     %input{type: "button", value:"Encode", onclick: "codeAddress()"} 
-          -# %input.form-text{:placeholder => "検索", :type => "seach"}/
-        
-          -# %input{:onclick => "codeAddress()", :type => "button", :value => "Encode"}/
-        -# =form_with model: @map, local: true do |f|
-        -#   %input#hidden_address{type: "hidden", name: "map[address]"}/
-        -#   =f.text_field :name, placeholder: "地名から探す", class: "area-research", autocomplete:"off"
-        -#   =f.submit "送信" ,class: "arearesearch-submit"
+      = search_form_for @search, url: maps_path do |f|
+        =f.search_field :city_cont, placeholder: '地名から探す'
+        =f.submit "検索"
+      -# %input#address{:type => "textbox", :value => "東京"}/
+      -# %input{:onclick => "codeAddress()", :type => "button", :value => "地図表示"}/
+
+      -# =form_with url: maps_path, method: :get,id: :"address" do |f|
+      -#   =f.text_field :address, placeholder: "地名から探す"
+      -#   =f.submit "地図表示", onclick: "codeAddress()"
         %lavel{class:"icon"}
           = icon('fas', 'search')                  
       =link_to "現在地から探す",maps_path, class:"position"
+
     #js-white-bg.white-background
 
             
