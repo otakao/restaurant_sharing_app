@@ -82,22 +82,22 @@
           %tr.test7
             %th 商品の状態
             %td
-              - if @post.condition == "1"
+              - if "#{@post.condition}" == "1"
                 %span 常温
-              - elsif @post.condition == "2"
+              - elsif "#{@post.condition}" == "2"
                 %span 冷蔵
               - else
                 %span 冷凍
           %tr.test8
             %th 受取期限（到着から何日まで）
             %td
-              - if @post.delivery_date == "1"
+              - if "#{@post.delivery_date}" == "1"
                 %span 当日
-              - elsif @post.condition == "2"
+              - elsif "#{@post.delivery_date}" == "2"
                 %span 1日〜3日以内
-              - elsif @post.condition == "3"
+              - elsif "#{@post.delivery_date}" == "3"
                 %span 4日〜7日以内
-              - elsif @post.condition == "4"
+              - elsif "#{@post.delivery_date}" == "4"
                 %span 2週間以内
               - else
                 %span 2週間以上先も可
