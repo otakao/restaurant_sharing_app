@@ -14,4 +14,4 @@ $(document).on('click','.fa.fa-window-close,.sign_modal_wrapper', function(){
   $('.sign_modal_wrapper').hide();
   $('.sign_modal').hide();
   $('.sign_up_modal.sign_modal_content').hide();
-})
+});
