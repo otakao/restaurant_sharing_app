@@ -10,6 +10,21 @@
       zoom: 14
     });
 
+    // <% @maps.each do |map| %>
+    // pos = new google.maps.Latlng(
+    //   <%=map.latitude%>
+    //   <%=map.longitude%>    
+    // );
+
+    // default_marker = new google.maps.Marker({
+    //   map: mapInstance,
+    //   position: pos,
+    //   icon: {
+    //     url: ' https://maps.google.com/mapfiles/ms/icons/green-dot.png',
+    //     scaledSize: new google.maps.Size(40, 40)
+    //   }
+    // });
+    // <%end%>
   }
 
   function codeAddress(){
