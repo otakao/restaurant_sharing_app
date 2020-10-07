@@ -42,12 +42,12 @@ Ruby2.7 / Ruby on Rails 5.2
 ## 開発環境
 Visual Studio Code
 ## テスト
-R-spec
+R-spec <br>
 factory_bot
 ## 本番環境
 AWS
 ## 使用技術
-GitHub
+GitHub <br>
 S3
 ## GCP
 Geocoding API <br>
