@@ -5,15 +5,9 @@
       = search_form_for @search, url: maps_path do |f|
         =f.search_field :city_cont, placeholder: '地名から探す'
         =f.submit "検索"
-      -# %input#address{:type => "textbox", :value => "東京"}/
-      -# %input{:onclick => "codeAddress()", :type => "button", :value => "地図表示"}/
-
-      -# =form_with url: maps_path, method: :get,id: :"address" do |f|
-      -#   =f.text_field :address, placeholder: "地名から探す"
-      -#   =f.submit "地図表示", onclick: "codeAddress()"
         %lavel{class:"icon"}
           = icon('fas', 'search')                  
-      =link_to "現在地から探す",maps_path, class:"position"
+      =link_to "地図から探す",maps_path, class:"position"
 
     #js-white-bg.white-background
 
